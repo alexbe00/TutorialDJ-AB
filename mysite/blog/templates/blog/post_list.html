@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+    {% block content %}
+        <ul class="cards">
+            {% for post in posts %} 
+                <li class='cards_item'>
+                    <div class='card'>
+                        <div class='card_image'><a href="{% url 'post_detail' pk=post.pk %}"><img src="https://www.rdstation.com/blog/wp-content/uploads/sites/2/2018/07/promocionar-publicaci%C3%B3n-en-Facebook.jpg" /></a></div>
+                        <div class='card_content'>
+                            <h2 class='card_title'><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                            <br>
+                            <p class='card_text'>{{ post.text|linebreaksbr }}</p>
+                            {% if post.published_date %}
+                            <p class='card_text'>publicado: {{ post.published_date }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
